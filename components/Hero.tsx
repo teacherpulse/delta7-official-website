@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ArrowRight, ChevronDown, Binary, Layers, Target, GraduationCap, User, Users } from 'lucide-react';
 import Logo from './Logo.tsx';
@@ -9,6 +9,11 @@ const Hero: React.FC = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const deltaRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  
+  // Track image load states for fallback icons
+  const [studentImageLoaded, setStudentImageLoaded] = useState(false);
+  const [teacherImageLoaded, setTeacherImageLoaded] = useState(false);
+  const [parentImageLoaded, setParentImageLoaded] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -123,43 +128,76 @@ const Hero: React.FC = () => {
               
               {/* Satellite Modules */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] group-hover:scale-110 group-hover:border-cyan-400 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all overflow-hidden p-2">
-                    <img 
-                      src="/student-icon.png" 
-                      alt="Student" 
-                      className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0" 
-                      style={{ filter: 'drop-shadow(0 0 4px rgba(34,211,238,0.5))' }} 
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
-                    />
-                    <GraduationCap size={28} className="text-cyan-400 relative z-10 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] group-hover:scale-110 group-hover:border-cyan-400 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all overflow-hidden p-2 relative">
+                    {studentImageLoaded ? (
+                      <img 
+                        src="/student-icon.png" 
+                        alt="Student" 
+                        className="w-full h-full object-contain filter drop-shadow-lg" 
+                        style={{ filter: 'drop-shadow(0 0 4px rgba(34,211,238,0.5))' }} 
+                      />
+                    ) : (
+                      <>
+                        <img 
+                          src="/student-icon.png" 
+                          alt="Student" 
+                          className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0 opacity-0" 
+                          onLoad={() => setStudentImageLoaded(true)}
+                          onError={() => setStudentImageLoaded(false)}
+                        />
+                        <GraduationCap size={28} className="text-cyan-400 relative z-10 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+                      </>
+                    )}
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Student</span>
               </div>
               
               <div className="absolute bottom-10 right-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.3)] group-hover:scale-110 group-hover:border-indigo-400 group-hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all overflow-hidden p-2">
-                    <img 
-                      src="/teacher-icon.png" 
-                      alt="Teacher" 
-                      className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0" 
-                      style={{ filter: 'drop-shadow(0 0 4px rgba(99,102,241,0.5))' }} 
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
-                    />
-                    <User size={28} className="text-indigo-400 relative z-10 drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]" />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.3)] group-hover:scale-110 group-hover:border-indigo-400 group-hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all overflow-hidden p-2 relative">
+                    {teacherImageLoaded ? (
+                      <img 
+                        src="/teacher-icon.png" 
+                        alt="Teacher" 
+                        className="w-full h-full object-contain filter drop-shadow-lg" 
+                        style={{ filter: 'drop-shadow(0 0 4px rgba(99,102,241,0.5))' }} 
+                      />
+                    ) : (
+                      <>
+                        <img 
+                          src="/teacher-icon.png" 
+                          alt="Teacher" 
+                          className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0 opacity-0" 
+                          onLoad={() => setTeacherImageLoaded(true)}
+                          onError={() => setTeacherImageLoaded(false)}
+                        />
+                        <User size={28} className="text-indigo-400 relative z-10 drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]" />
+                      </>
+                    )}
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Teacher</span>
               </div>
 
               <div className="absolute bottom-10 left-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.3)] group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transition-all overflow-hidden p-2">
-                    <img 
-                      src="/parent-icon.png" 
-                      alt="Parent" 
-                      className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0" 
-                      style={{ filter: 'drop-shadow(0 0 4px rgba(20,184,166,0.5))' }} 
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
-                    />
-                    <Users size={28} className="text-teal-400 relative z-10 drop-shadow-[0_0_8px_rgba(20,184,166,0.6)]" />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.3)] group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transition-all overflow-hidden p-2 relative">
+                    {parentImageLoaded ? (
+                      <img 
+                        src="/parent-icon.png" 
+                        alt="Parent" 
+                        className="w-full h-full object-contain filter drop-shadow-lg" 
+                        style={{ filter: 'drop-shadow(0 0 4px rgba(20,184,166,0.5))' }} 
+                      />
+                    ) : (
+                      <>
+                        <img 
+                          src="/parent-icon.png" 
+                          alt="Parent" 
+                          className="w-full h-full object-contain filter drop-shadow-lg absolute inset-0 opacity-0" 
+                          onLoad={() => setParentImageLoaded(true)}
+                          onError={() => setParentImageLoaded(false)}
+                        />
+                        <Users size={28} className="text-teal-400 relative z-10 drop-shadow-[0_0_8px_rgba(20,184,166,0.6)]" />
+                      </>
+                    )}
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Parent</span>
               </div>
