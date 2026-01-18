@@ -1,8 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App.tsx';
 
-// Emergency UI for fatal crashes
+// Emergency UI and Remote Diagnostic Logging
+const logRemoteError = (message: string, data: any = {}) => {
+  fetch('http://127.0.0.1:7243/ingest/3747187a-d8aa-46a4-806e-deb4927df6d2', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      location: 'index.tsx',
+      message: message,
+      data: data,
+      timestamp: Date.now(),
+      sessionId: 'live-prod-session',
+      hypothesisId: 'LiveCrash'
+    })
+  }).catch(() => {});
+};
+
 const showEmergencyError = (error: string) => {
   const root = document.getElementById('root');
   if (root) {
@@ -20,7 +35,9 @@ const showEmergencyError = (error: string) => {
 };
 
 window.onerror = (message, source, lineno, colno, error) => {
-  showEmergencyError(`${message}\nAt: ${source}:${lineno}:${colno}`);
+  const errorMsg = `${message}\nAt: ${source}:${lineno}:${colno}`;
+  logRemoteError('Live Runtime Crash', { message, source, lineno, colno, error: error?.stack });
+  showEmergencyError(errorMsg);
   return false;
 };
 
@@ -30,6 +47,7 @@ const rootElement = document.getElementById('root');
 if (!rootElement) {
   const msg = 'CRITICAL: Root element #root not found in the DOM.';
   console.error(msg);
+  logRemoteError(msg);
   showEmergencyError(msg);
   throw new Error(msg);
 }
@@ -45,5 +63,6 @@ try {
   console.log('React App mounted successfully.');
 } catch (err: any) {
   console.error('Mounting Error:', err);
+  logRemoteError('Mounting Error', { error: err.message, stack: err.stack });
   showEmergencyError(err.message || 'Unknown Mounting Error');
 }

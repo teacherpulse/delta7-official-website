@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Triangle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Logo from './Logo.tsx';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +24,8 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-slate-950/80 backdrop-blur-md shadow-lg border-b border-white/5' : 'py-6 bg-transparent'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center space-x-2 group">
-          <div className="relative">
-            <Triangle className="w-8 h-8 text-teal-400 fill-teal-400/20 group-hover:rotate-180 transition-transform duration-500" />
-            <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white">Δ7</span>
-          </div>
+        <a href="#" className="flex items-center space-x-3 group">
+          <Logo size="sm" />
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tight text-white leading-none">Delta7</span>
             <span className="text-[10px] uppercase tracking-[0.2em] text-teal-400 font-semibold">Edu-Frameworks</span>

@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Triangle, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+import Logo from './Logo.tsx';
 
 const Footer: React.FC = () => {
   return (
@@ -8,8 +9,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <a href="#" className="flex items-center space-x-2 mb-6">
-              <Triangle className="w-8 h-8 text-teal-400 fill-teal-400/20" />
+            <a href="#" className="flex items-center space-x-3 mb-6">
+              <Logo size="sm" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold tracking-tight text-white leading-none">Delta7</span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-teal-400 font-semibold">Edu-Frameworks</span>
