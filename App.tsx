@@ -1,4 +1,4 @@
-
+// Educational Architecture v7.1 - Final Synchronization
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
