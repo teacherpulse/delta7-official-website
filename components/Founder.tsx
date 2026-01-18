@@ -45,7 +45,7 @@ const StatCounter: React.FC<{ value: string, label: string }> = ({ value, label 
 };
 
 const Founder: React.FC = () => {
-  const founderImage = "https://raw.githubusercontent.com/StackBlitz/stackblitz-images/main/suram-mohan-kumar.png";
+  const founderImage = encodeURI("/suram mohan kumar.jpg");
 
   return (
     <section id="founder" className="reveal-section py-32 relative overflow-hidden">
