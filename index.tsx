@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 
-console.log('Delta7 Application Initializing...');
+console.log('Delta7 Application Initializing - Version 1.0.2 - Official Production Build');
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

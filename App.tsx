@@ -1,4 +1,4 @@
-// Educational Architecture v7.1 - Final Synchronization
+// Delta7 Official Build - Final Deployment Version
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
