@@ -123,22 +123,22 @@ const Hero: React.FC = () => {
               
               {/* Satellite Modules */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-cyan-400 border-cyan-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
-                    <img src="/student-icon.png" alt="Student" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] group-hover:scale-110 group-hover:border-cyan-400 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all overflow-hidden p-2">
+                    <img src="/student-icon.png" alt="Student" className="w-full h-full object-contain filter drop-shadow-lg" style={{ filter: 'drop-shadow(0 0 4px rgba(34,211,238,0.5))' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Student</span>
               </div>
               
               <div className="absolute bottom-10 right-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-indigo-400 border-indigo-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
-                    <img src="/teacher-icon.png" alt="Teacher" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.3)] group-hover:scale-110 group-hover:border-indigo-400 group-hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all overflow-hidden p-2">
+                    <img src="/teacher-icon.png" alt="Teacher" className="w-full h-full object-contain filter drop-shadow-lg" style={{ filter: 'drop-shadow(0 0 4px rgba(99,102,241,0.5))' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Teacher</span>
               </div>
 
               <div className="absolute bottom-10 left-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-teal-400 border-teal-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
-                    <img src="/parent-icon.png" alt="Parent" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                 <div className="w-16 h-16 rounded-2xl bg-slate-900/90 backdrop-blur-md flex items-center justify-center border-2 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.3)] group-hover:scale-110 group-hover:border-teal-400 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transition-all overflow-hidden p-2">
+                    <img src="/parent-icon.png" alt="Parent" className="w-full h-full object-contain filter drop-shadow-lg" style={{ filter: 'drop-shadow(0 0 4px rgba(20,184,166,0.5))' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Parent</span>
               </div>

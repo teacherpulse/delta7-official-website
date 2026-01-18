@@ -10,6 +10,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   const logoRef = useRef<HTMLDivElement>(null);
   const glintRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [imageError, setImageError] = useState(false);
 
   const sizeClasses = {
@@ -21,6 +22,13 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
 
   useEffect(() => {
     if (!logoRef.current) return;
+
+    // Ensure video plays
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log('Video autoplay prevented:', err);
+      });
+    }
 
     const logoElement = logoRef.current;
     let hoverAnimation: gsap.core.Tween | null = null;
@@ -121,18 +129,36 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
       {/* Main Logo Container - Transparent Background */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-transparent shadow-[0_0_40px_rgba(34,211,238,0.3)] border-2 border-cyan-400/50 flex items-center justify-center">
         {!imageError ? (
-          <img 
-            src="/logo.png" 
-            alt="Delta7 Logo" 
+          <video
+            ref={videoRef}
+            src="/Lively_Triangle_Logo_Animation_Prompt.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="relative z-10 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-md"
+            style={{
+              mixBlendMode: 'multiply',
+              opacity: 1,
+              filter: 'contrast(1.1) brightness(0.95)',
+              WebkitFilter: 'contrast(1.1) brightness(0.95)'
+            }}
             onError={() => {
-              // Only set error once to prevent infinite loops
+              // Fallback to image if video fails
               setImageError(true);
             }}
           />
         ) : (
           <div className="relative z-10 w-full h-full flex items-center justify-center">
-            <span className="text-cyan-400 font-black text-center z-10 select-none drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" style={{ fontSize: size === 'xl' ? '3.75rem' : size === 'lg' ? '3rem' : size === 'md' ? '1.875rem' : '1.25rem' }}>
+            <img 
+              src="/logo.png" 
+              alt="Delta7 Logo" 
+              className="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-md"
+              onError={() => {
+                // Final fallback to text
+              }}
+            />
+            <span className="absolute text-cyan-400 font-black text-center z-10 select-none drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" style={{ fontSize: size === 'xl' ? '3.75rem' : size === 'lg' ? '3rem' : size === 'md' ? '1.875rem' : '1.25rem' }}>
               Δ7
             </span>
           </div>
