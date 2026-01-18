@@ -135,7 +135,7 @@ const Founder: React.FC = () => {
               <Quote className="absolute -top-8 left-12 w-20 h-20 text-cyan-500/10 group-hover/quote:text-cyan-500/20 transition-colors duration-500" />
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
               <p className="text-2xl font-medium italic text-slate-200 leading-snug tracking-tight group-hover/quote:text-white transition-colors duration-500 relative z-10">
-                "Our mission is to replace chaotic, ad-hoc teaching with high-precision educational architectures."
+                "Solving complex educational challenges with precision frameworks that remain simple and adaptable for everyone"
               </p>
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-tl-full blur-2xl opacity-0 group-hover/quote:opacity-100 transition-opacity duration-500"></div>
             </div>

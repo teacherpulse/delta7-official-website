@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
                     <img 
                       src={encodeURI("/student icon.png")} 
                       alt="Student" 
-                      className="w-full h-full object-contain" 
+                      className="w-full h-full object-contain rounded-xl" 
                       style={{ 
                         filter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(34,211,238,0.6))',
                         WebkitFilter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(34,211,238,0.6))'
@@ -143,7 +143,7 @@ const Hero: React.FC = () => {
                     <img 
                       src={encodeURI("/teacher icon.png")} 
                       alt="Teacher" 
-                      className="w-full h-full object-contain" 
+                      className="w-full h-full object-contain rounded-xl" 
                       style={{ 
                         filter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(99,102,241,0.6))',
                         WebkitFilter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(99,102,241,0.6))'
@@ -158,7 +158,7 @@ const Hero: React.FC = () => {
                     <img 
                       src={encodeURI("/Parent Icon.png")} 
                       alt="Parent" 
-                      className="w-full h-full object-contain" 
+                      className="w-full h-full object-contain rounded-xl" 
                       style={{ 
                         filter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(20,184,166,0.6))',
                         WebkitFilter: 'brightness(1.1) contrast(1.1) drop-shadow(0 0 6px rgba(20,184,166,0.6))'

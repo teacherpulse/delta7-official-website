@@ -131,7 +131,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
         {!imageError ? (
           <video
             ref={videoRef}
-            src="/Lively_Triangle_Logo_Animation_Prompt.mp4"
+            src="/Delta_Logo_Final_Animation_Logo.mp4"
             autoPlay
             loop
             muted
