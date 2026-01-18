@@ -2,15 +2,15 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Founder from './components/Founder';
-import HTMFSection from './components/HTMFSection';
-import HSMFSection from './components/HSMFSection';
-import TechInnovation from './components/TechInnovation';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
-import BackgroundAnimation from './components/BackgroundAnimation';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Founder from '@/components/Founder';
+import HTMFSection from '@/components/HTMFSection';
+import HSMFSection from '@/components/HSMFSection';
+import TechInnovation from '@/components/TechInnovation';
+import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
+import BackgroundAnimation from '@/components/BackgroundAnimation';
 
 gsap.registerPlugin(ScrollTrigger);
 
