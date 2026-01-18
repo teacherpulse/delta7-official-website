@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delta7 Edu-Frameworks | Architecting the Future of Education</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan-glow: #22d3ee;
+      --blue-deep: #080c14;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: var(--blue-deep);
+      color: #f1f5f9;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);
+    }
+
+    .neon-border-hover:hover {
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.2), inset 0 0 10px rgba(34, 211, 238, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2dd4bf 0%, #3b82f6 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Delta-Grid removed as requested */
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #22d3ee;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(100%); opacity: 0; }
+    }
+    
+    .scan-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #22d3ee, transparent);
+      animation: scan 3s linear infinite;
+    }
+
+    .reveal-section {
+      will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden selection:bg-teal-500/30">
+  <div id="protocol-check" style="display:none; background: #991b1b; color: white; padding: 20px; text-align: center; font-family: sans-serif; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <strong>CRITICAL ERROR:</strong> You are opening this file directly. This application requires a web server to run. Please run <code>npm install</code> and <code>npm run dev</code> in your terminal as per the instructions.
+  </div>
+  <script>
+    if (window.location.protocol === 'file:') {
+      document.getElementById('protocol-check').style.display = 'block';
+    }
+  </script>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
