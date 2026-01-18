@@ -13,17 +13,20 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   const [imageError, setImageError] = useState(false);
 
   const sizeClasses = {
-    sm: 'w-8 h-8',
-    md: 'w-12 h-12',
-    lg: 'w-24 h-24',
-    xl: 'w-48 h-48',
+    sm: 'w-10 h-10',      // 32px -> 40px (25% increase)
+    md: 'w-16 h-16',      // 48px -> 64px (33% increase, closest Tailwind size)
+    lg: 'w-[120px] h-[120px]',  // 96px -> 120px (25% increase - custom size)
+    xl: 'w-60 h-60',      // 192px -> 240px (25% increase)
   };
 
   useEffect(() => {
     if (!logoRef.current) return;
 
+    const logoElement = logoRef.current;
+    let hoverAnimation: gsap.core.Tween | null = null;
+
     // Lively floating movement
-    gsap.to(logoRef.current, {
+    gsap.to(logoElement, {
       y: -5,
       rotation: 2,
       duration: 2,
@@ -42,6 +45,69 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
         ease: "power2.inOut"
       });
     }
+
+    // Extremely live hover pop-out effect (300%)
+    const handleMouseEnter = () => {
+      // Kill any existing animation
+      if (hoverAnimation) hoverAnimation.kill();
+      
+      hoverAnimation = gsap.to(logoElement, {
+        scale: 3, // 300% pop-out
+        zIndex: 9999,
+        duration: 0.6,
+        ease: "back.out(1.7)", // Bouncy elastic effect for extra liveliness
+        onUpdate: function() {
+          // Ensure it stays on top during animation
+          logoElement.style.zIndex = '9999';
+        }
+      });
+
+      // Enhance the aura glow on hover
+      const aura = logoElement.querySelector('.logo-aura');
+      if (aura) {
+        gsap.to(aura, {
+          opacity: 0.5,
+          scale: 2,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      // Kill any existing animation
+      if (hoverAnimation) hoverAnimation.kill();
+      
+      hoverAnimation = gsap.to(logoElement, {
+        scale: 1,
+        zIndex: 'auto',
+        duration: 0.5,
+        ease: "power2.inOut",
+        onComplete: function() {
+          logoElement.style.zIndex = '';
+        }
+      });
+
+      // Reset the aura glow
+      const aura = logoElement.querySelector('.logo-aura');
+      if (aura) {
+        gsap.to(aura, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    logoElement.addEventListener('mouseenter', handleMouseEnter);
+    logoElement.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      logoElement.removeEventListener('mouseenter', handleMouseEnter);
+      logoElement.removeEventListener('mouseleave', handleMouseLeave);
+      if (hoverAnimation) hoverAnimation.kill();
+    };
   }, []);
 
   return (
@@ -49,12 +115,11 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
       ref={logoRef}
       className={`relative group cursor-pointer perspective-1000 ${sizeClasses[size]} ${className}`}
     >
-      {/* Permanent High-Contrast Aura */}
-      <div className="absolute -inset-4 bg-cyan-500/10 rounded-full blur-2xl animate-pulse" />
+      {/* Permanent High-Contrast Aura - Enhanced for hover effect */}
+      <div className="logo-aura absolute -inset-4 bg-cyan-500/10 rounded-full blur-2xl animate-pulse" />
       
-      {/* Main Logo Container */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white shadow-[0_0_40px_rgba(34,211,238,0.3)] border-2 border-cyan-400/50 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-cyan-50 to-slate-100" />
+      {/* Main Logo Container - Transparent Background */}
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-transparent shadow-[0_0_40px_rgba(34,211,238,0.3)] border-2 border-cyan-400/50 flex items-center justify-center">
         {!imageError ? (
           <img 
             src="/logo.png" 
@@ -67,7 +132,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
           />
         ) : (
           <div className="relative z-10 w-full h-full flex items-center justify-center">
-            <span className="text-slate-900 font-black text-center z-10 select-none" style={{ fontSize: size === 'lg' || size === 'xl' ? '3rem' : size === 'md' ? '1.5rem' : '1rem' }}>
+            <span className="text-cyan-400 font-black text-center z-10 select-none drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" style={{ fontSize: size === 'xl' ? '3.75rem' : size === 'lg' ? '3rem' : size === 'md' ? '1.875rem' : '1.25rem' }}>
               Δ7
             </span>
           </div>

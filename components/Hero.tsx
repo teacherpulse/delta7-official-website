@@ -106,8 +106,16 @@ const Hero: React.FC = () => {
               {/* Outer Vibrant Ring */}
               <div className="absolute w-[420px] h-[420px] rounded-full border border-cyan-500/10 animate-ping opacity-20" />
               
-              <div className="w-80 h-80 rounded-[4rem] border-2 border-cyan-400/30 rotate-45 animate-spin-slow flex items-center justify-center bg-gradient-to-br from-white/10 to-cyan-500/5 backdrop-blur-2xl shadow-[0_0_80px_rgba(34,211,238,0.15)] overflow-hidden">
-                <div className="rotate-[-45deg] flex flex-col items-center">
+              {/* Reverse Delta (Inverted Triangle) Shape with Same Effects */}
+              <div className="w-80 h-80 relative flex items-center justify-center">
+                <div 
+                  className="absolute inset-0 border-2 border-cyan-400/30 bg-gradient-to-br from-white/10 to-cyan-500/5 backdrop-blur-2xl shadow-[0_0_80px_rgba(34,211,238,0.15)] animate-spin-slow"
+                  style={{ 
+                    clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+                    WebkitClipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+                  }}
+                ></div>
+                <div className="relative z-10 flex flex-col items-center">
                   <Logo size="lg" className="mb-4 drop-shadow-[0_0_20px_rgba(34,211,238,0.4)]" />
                   <div className="scan-line mt-4 opacity-50"></div>
                 </div>
@@ -118,21 +126,21 @@ const Hero: React.FC = () => {
                  <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-cyan-400 border-cyan-500/30 group-hover:scale-110 transition-transform">
                     <Target size={24} />
                  </div>
-                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Mastery</span>
+                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Student</span>
               </div>
               
               <div className="absolute bottom-10 right-0 flex flex-col items-center group">
                  <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-indigo-400 border-indigo-500/30 group-hover:scale-110 transition-transform">
                     <Binary size={24} />
                  </div>
-                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Data</span>
+                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Teacher</span>
               </div>
 
               <div className="absolute bottom-10 left-0 flex flex-col items-center group">
                  <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-teal-400 border-teal-500/30 group-hover:scale-110 transition-transform">
                     <ChevronDown size={24} />
                  </div>
-                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Input</span>
+                 <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Parent</span>
               </div>
             </div>
           </div>

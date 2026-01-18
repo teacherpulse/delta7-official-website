@@ -19,19 +19,19 @@ const ContactForm: React.FC = () => {
                   <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                     <Mail className="w-6 h-6" />
                   </div>
-                  <span className="font-bold">info@delta7edu.com</span>
+                  <span className="font-bold">support@delta7.co.in</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                     <Phone className="w-6 h-6" />
                   </div>
-                  <span className="font-bold">+91 99999 88888</span>
+                  <span className="font-bold">+91-9133573344</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6" />
                   </div>
-                  <span className="font-bold">Hyderabad, Telangana, India</span>
+                  <span className="font-bold">Gajwel, Siddipet, Telangana</span>
                 </div>
               </div>
 
