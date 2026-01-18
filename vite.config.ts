@@ -16,13 +16,13 @@ export default defineConfig(({ mode }) => {
       },
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '.'),
+          '@': path.resolve(__dirname, './'),
         },
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
       },
       build: {
         rollupOptions: {
-          external: ['/index.css']
+          // No external CSS needed if using Tailwind CDN or inline styles
         }
       }
     };
