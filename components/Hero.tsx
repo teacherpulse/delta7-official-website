@@ -101,12 +101,15 @@ const Hero: React.FC = () => {
 
         <div className="hidden lg:flex justify-center relative">
           <div ref={deltaRef} className="relative w-[550px] h-[550px]">
-            {/* The Delta Core */}
+            {/* The Delta Core - Enhanced Visibility */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 rounded-[4rem] border-2 border-cyan-500/20 rotate-45 animate-spin-slow flex items-center justify-center bg-cyan-500/5 backdrop-blur-3xl shadow-[0_0_100px_rgba(34,211,238,0.1)] overflow-hidden">
+              {/* Outer Vibrant Ring */}
+              <div className="absolute w-[420px] h-[420px] rounded-full border border-cyan-500/10 animate-ping opacity-20" />
+              
+              <div className="w-80 h-80 rounded-[4rem] border-2 border-cyan-400/30 rotate-45 animate-spin-slow flex items-center justify-center bg-gradient-to-br from-white/10 to-cyan-500/5 backdrop-blur-2xl shadow-[0_0_80px_rgba(34,211,238,0.15)] overflow-hidden">
                 <div className="rotate-[-45deg] flex flex-col items-center">
-                  <Logo size="lg" className="mb-4" />
-                  <div className="scan-line mt-4"></div>
+                  <Logo size="lg" className="mb-4 drop-shadow-[0_0_20px_rgba(34,211,238,0.4)]" />
+                  <div className="scan-line mt-4 opacity-50"></div>
                 </div>
               </div>
               

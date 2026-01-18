@@ -9,8 +9,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <a href="#" className="flex items-center space-x-3 mb-6">
-              <Logo size="sm" />
+            <a href="#" className="flex items-center space-x-4 mb-6 group">
+              <Logo size="md" className="drop-shadow-[0_0_15px_rgba(34,211,238,0.2)]" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold tracking-tight text-white leading-none">Delta7</span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-teal-400 font-semibold">Edu-Frameworks</span>

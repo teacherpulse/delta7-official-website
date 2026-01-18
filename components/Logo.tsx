@@ -48,15 +48,16 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
       ref={logoRef}
       className={`relative group cursor-pointer perspective-1000 ${sizeClasses[size]} ${className}`}
     >
-      {/* Outer Glow */}
-      <div className="absolute -inset-2 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
+      {/* Permanent High-Contrast Aura */}
+      <div className="absolute -inset-4 bg-cyan-500/10 rounded-full blur-2xl animate-pulse" />
       
       {/* Main Logo Container */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden glass-card border border-white/10 shadow-2xl flex items-center justify-center">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white shadow-[0_0_40px_rgba(34,211,238,0.3)] border-2 border-cyan-400/50 flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-cyan-50 to-slate-100" />
         <img 
           src="/logo.png" 
           alt="Delta7 Logo" 
-          className="w-full h-full object-contain p-1 transform group-hover:scale-110 transition-transform duration-500"
+          className="relative z-10 w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-md"
           onError={(e) => {
             // Fallback if logo.png is missing
             (e.target as HTMLImageElement).src = 'https://raw.githubusercontent.com/StackBlitz/stackblitz-images/main/delta7-logo-placeholder.png';
