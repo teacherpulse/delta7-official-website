@@ -66,7 +66,23 @@ const Founder: React.FC = () => {
                     src={founderImage} 
                     alt="Suram Mohan Kumar" 
                     className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-[1500ms] transform group-hover:scale-110 group-hover:brightness-110"
+                    style={{
+                      filter: 'brightness(1.08) contrast(1.05) saturate(1.1)',
+                      WebkitFilter: 'brightness(1.08) contrast(1.05) saturate(1.1)'
+                    }}
                   />
+                  
+                  {/* Face Beautification Overlay - Brightens face and reduces under-eye darkness */}
+                  <div className="absolute inset-0 bg-gradient-radial from-white/8 via-white/3 to-transparent" style={{
+                    background: 'radial-gradient(ellipse 60% 70% at 50% 40%, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 30%, transparent 60%)',
+                    mixBlendMode: 'soft-light'
+                  }}></div>
+                  
+                  {/* Subtle Glow Effect on Face */}
+                  <div className="absolute inset-0 bg-gradient-radial from-cyan-400/5 via-transparent to-transparent" style={{
+                    background: 'radial-gradient(ellipse 50% 60% at 50% 35%, rgba(34,211,238,0.08) 0%, transparent 50%)',
+                    mixBlendMode: 'screen'
+                  }}></div>
                   
                   {/* Enhanced Gradient Overlay with Multiple Layers */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>

@@ -123,22 +123,22 @@ const Hero: React.FC = () => {
               
               {/* Satellite Modules */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-cyan-400 border-cyan-500/30 group-hover:scale-110 transition-transform">
-                    <Target size={24} />
+                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-cyan-400 border-cyan-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
+                    <img src="/student-icon.png" alt="Student" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Student</span>
               </div>
               
               <div className="absolute bottom-10 right-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-indigo-400 border-indigo-500/30 group-hover:scale-110 transition-transform">
-                    <Binary size={24} />
+                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-indigo-400 border-indigo-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
+                    <img src="/teacher-icon.png" alt="Teacher" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Teacher</span>
               </div>
 
               <div className="absolute bottom-10 left-0 flex flex-col items-center group">
-                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-teal-400 border-teal-500/30 group-hover:scale-110 transition-transform">
-                    <ChevronDown size={24} />
+                 <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-teal-400 border-teal-500/30 group-hover:scale-110 transition-transform overflow-hidden p-2">
+                    <img src="/parent-icon.png" alt="Parent" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                  </div>
                  <span className="mt-2 text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">Parent</span>
               </div>
